@@ -8,6 +8,8 @@ let indice = 0;
 const mensagemEl = document.getElementById("mensagem");
 const botaoProximo = document.getElementById("proximo");
 const botaoAnterior = document.getElementById("anterior");
+const botaoInicio = document.getElementById("inicio");
+const botaoFinal = document.getElementById("final");
 
 function atualizarMensagem() {
   const atual = mensagens[indice];
@@ -17,6 +19,8 @@ function atualizarMensagem() {
   // Desabilitar ou habilitar botões com base no índice atual
   botaoAnterior.disabled = indice === 0;
   botaoProximo.disabled = indice === mensagens.length - 1;
+  botaoInicio.disabled = indice === 0;
+  botaoFinal.disabled = indice === mensagens.length - 1;
 }
 
 botaoProximo.addEventListener("click", () => {
@@ -31,6 +35,16 @@ botaoAnterior.addEventListener("click", () => {
     indice--;
     atualizarMensagem();
   }
+});
+
+botaoInicio.addEventListener("click", () => {
+  indice = 0;
+  atualizarMensagem();
+});
+
+botaoFinal.addEventListener("click", () => {
+  indice = mensagens.length - 1;
+  atualizarMensagem();
 });
 
 atualizarMensagem();
